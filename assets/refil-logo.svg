@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" role="img" aria-labelledby="t d">
+<title id="t">El Refil de la Abuela</title>
+<desc id="d">Lockup visual basado en la identidad pública del restaurante.</desc>
+<rect width="760" height="220" rx="28" fill="#28647f"/>
+<g transform="translate(112 110)" fill="none" stroke="#dfc27a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <circle r="26"/>
+  <path d="M0-40 C8-69 20-88 38-103 C39-77 33-56 18-39"/>
+  <path d="M27-30 C52-48 75-55 98-54 C79-34 60-22 37-17"/>
+  <path d="M39 2 C68 4 89 14 108 31 C81 37 59 34 37 21"/>
+  <path d="M22 33 C42 54 51 76 52 100 C29 87 14 70 6 45"/>
+  <path d="M-10 40 C-19 67-34 86-55 101 C-53 74-45 54-28 36"/>
+  <path d="M-34 22 C-60 35-84 38-107 31 C-86 13-64 4-40 4"/>
+  <path d="M-36-13 C-63-22-82-36-98-55 C-71-57-49-50-29-35"/>
+  <path d="M-18-37 C-33-62-38-84-34-108 C-14-89 0-68 3-42"/>
+</g>
+<g fill="#fff" font-family="Arial, Helvetica, sans-serif">
+  <text x="230" y="101" font-size="62" letter-spacing="2">EL REFIL<tspan font-size="22" dy="-26">®</tspan></text>
+  <text x="234" y="151" font-size="34" letter-spacing="6">DE LA ABUELA</text>
+</g>
+</svg>

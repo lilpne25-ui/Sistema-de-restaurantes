@@ -1,0 +1,9 @@
+output/
+*.md
+*.py
+*.bat
+narration.json
+manifest.json
+.env*
+.git/
+node_modules/

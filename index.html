@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="icon" href="assets/refil-logo.svg" type="image/svg+xml" />
+  <title>VLUX × El Refil — Experiencia interactiva</title>
+  <meta name="description" content="Experiencia comercial interactiva de VLUX POS para El Refil de la Abuela. Flujo restaurante, ROI y plan de implementación." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="experience.css" />
+  <link rel="stylesheet" href="refil-design.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="nav-shell">
+    <a class="refil-lockup" href="#inicio" aria-label="El Refil, inicio"><img src="assets/refil-logo.svg" alt="El Refil de la Abuela"><span class="vlux-credit">por <img class="vlux-official" src="assets/vlux-official.png" alt="VLUX — AI Transformation Partner"></span></a>
+    <nav class="desktop-nav" aria-label="Navegación principal"><a href="#producto">La experiencia</a><a href="#roi">El retorno</a><a href="#real">El proyecto</a></nav>
+    <button class="nav-demo" id="startGuideTop">Ver recorrido <span>↗</span></button>
+  </header>
+  <main>
+    <section class="hero" id="inicio" data-tour="hero">
+      <img class="hero-photo" src="assets/breakfast-editorial.png" alt="Composición editorial de chilaquiles y café de olla" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-inner"><div class="hero-copy">
+        <p class="overline">EL REFIL DE LA ABUELA · UNA NUEVA EXPERIENCIA</p>
+        <h1>Tu esencia.<br>En cada mesa.<br><em>Todo conectado.</em></h1>
+        <p class="lead">Más tiempo para recibir.<br>Más claridad para dirigir.</p>
+        <div class="hero-actions"><button class="button button-primary" id="startGuideHero"><span class="play">▶</span> Comenzar el servicio</button><span class="hero-duration">3 min · con narración</span></div>
+      </div></div>
+      <div class="hero-bottom"><span>UNA MESA. UN PEDIDO. TODA LA HISTORIA.</span><a href="#producto">Descubre cómo funciona <span>↓</span></a><small>Imagen de ambiente generada con IA</small></div>
+    </section>
+    <section class="story-intro"><p class="eyebrow">HECHO PARA TU FORMA DE ATENDER</p><h2>Lo que sucede en una mesa.<br><span>Se entiende en todo el negocio.</span></h2><p>Del primer «buenos días» al cierre de la cuenta.<br>Una experiencia que acompaña a tu equipo, paso a paso.</p><div class="story-path"><span>01 <b>Recibir</b></span><i>→</i><span>02 <b>Preparar</b></span><i>→</i><span>03 <b>Cobrar</b></span><i>→</i><span>04 <b>Entender</b></span></div></section>
+    <section class="product-section" id="producto" data-tour="product">
+      <div class="product-intro reveal">
+        <p class="eyebrow">TU RESTAURANTE, EN TUS MANOS</p>
+        <h2>Ahora, toma el control.</h2>
+        <p>Elige una mesa. Crea un pedido. Mira cómo llega a cocina y se convierte en una venta. Tú marcas el ritmo.</p>
+        <div class="demo-disclaimer"><i></i><span><b>Prototipo comercial conectado al alcance real.</b> Las interacciones son locales; el piloto sustituye esta capa demo por Odoo.</span></div>
+      </div>
+
+      <div class="pos-window reveal" id="posWindow">
+        <header class="pos-topbar">
+          <div class="pos-brand"><img src="assets/refil-logo.svg" alt="El Refil"><span><small>VLUX POS</small><b>Restaurante · Metepec</b></span></div>
+          <div class="pos-tabs" role="tablist">
+            <button class="pos-tab active" data-view="tables">Mesas</button>
+            <button class="pos-tab" data-view="register">Caja</button>
+            <button class="pos-tab" data-view="kitchen">Cocina <i id="kitchenBadge">0</i></button>
+            <button class="pos-tab" data-view="owner">Owner</button>
+          </div>
+          <div class="sync-state"><i></i> Demo sincronizada</div>
+        </header>
+
+        <div class="pos-view active" id="view-tables" data-tour="tables">
+          <div class="view-title"><div><small>PISO PRINCIPAL</small><h3>Selecciona una mesa</h3></div><div class="legend"><span><i class="l-free"></i>Libre</span><span><i class="l-busy"></i>Activa</span><span><i class="l-kitchen"></i>Cocina</span></div></div>
+          <div class="table-grid" id="tableGrid"></div>
+          <div class="view-foot"><span>Cada mesa guarda la historia de su servicio.</span><button class="mini-action" id="chooseTable12">Usar mesa 12 para demo →</button></div>
+        </div>
+
+        <div class="pos-view" id="view-register" data-tour="register">
+          <div class="register-layout">
+            <aside class="register-categories"><small>CATEGORÍAS</small><button class="cat active" data-cat="all">Todo</button><button class="cat" data-cat="desayuno">Desayuno</button><button class="cat" data-cat="bebidas">Bebidas</button><button class="cat" data-cat="ensalada">Ensaladas</button></aside>
+            <div class="register-products"><div class="view-title compact"><div><small id="selectedTableLabel">MESA —</small><h3>Toma la orden</h3></div><span class="demo-tag">CATÁLOGO DEMO</span></div><div class="product-grid" id="productGrid"></div><p class="micro-note">Nombres basados en referencias públicas del restaurante. Los importes que no están verificados se señalan como demo y se sustituyen por Odoo real.</p></div>
+            <aside class="order-card"><div class="order-head"><div><small>ORDEN</small><strong id="orderTable">Sin mesa</strong></div><span id="orderCount">0 prod.</span></div><div class="order-lines" id="orderLines"><div class="order-empty">Selecciona una mesa y agrega productos.</div></div><div class="order-totals"><div><span>Subtotal</span><b id="orderSubtotal">$0</b></div><div class="grand"><span>Total</span><strong id="orderTotal">$0</strong></div></div><div class="order-actions"><button class="secondary-dark" id="splitBill" disabled>Dividir cuenta</button><button class="button button-primary full" id="sendKitchen" disabled>Enviar a cocina</button></div></aside>
+          </div>
+        </div>
+
+        <div class="pos-view" id="view-kitchen" data-tour="kitchen">
+          <div class="view-title"><div><small>PANTALLA DE PREPARACIÓN</small><h3>Cocina</h3></div><div class="kitchen-metrics"><span><b id="kPending">0</b> Para preparar</span><span><b id="kReady">0</b> Listos</span></div></div>
+          <div class="kitchen-board"><div class="k-col"><header><span>Para preparar</span><b id="pendingCount">0</b></header><div class="k-list" id="pendingOrders"><div class="k-empty">Aún no hay órdenes.</div></div></div><div class="k-col"><header><span>Listo</span><b id="readyCount">0</b></header><div class="k-list" id="readyOrders"><div class="k-empty">Los pedidos listos aparecerán aquí.</div></div></div></div>
+          <div class="view-foot"><span>El siguiente paso se ve, no se adivina.</span><button class="mini-action" id="autoKitchen" disabled>Simular preparación →</button></div>
+        </div>
+
+        <div class="pos-view" id="view-owner" data-tour="owner">
+          <div class="owner-dashboard">
+            <div class="owner-header"><div><small>VLUX OWNER · HOY</small><h3>La misma venta, ahora como decisión.</h3></div><span class="owner-status"><i></i> Vista demo</span></div>
+            <div class="owner-cards"><article><small>Ventas</small><strong id="metricSales">$18,420</strong><span id="metricSalesNote">Base demo</span></article><article><small>Tickets</small><strong id="metricTickets">87</strong><span id="metricTicketsNote">Base demo</span></article><article><small>Ticket promedio</small><strong id="metricAvg">$212</strong><span>Sesión demo</span></article><article><small>Última mesa</small><strong id="metricTable">—</strong><span id="metricLast">Sin cobro</span></article></div>
+            <div class="owner-lower"><div class="owner-chart"><header><span>Ventas por tramo</span><small>ILUSTRATIVO</small></header><div class="bars" id="ownerBars"><i style="height:25%"></i><i style="height:39%"></i><i style="height:31%"></i><i style="height:52%"></i><i style="height:48%"></i><i style="height:71%"></i><i style="height:62%"></i><i style="height:81%"></i><i id="liveBar" style="height:56%"></i></div></div><div class="owner-event"><small>TRAZABILIDAD</small><div class="event-line done"><i></i><span>Orden creada</span></div><div class="event-line" id="evKitchen"><i></i><span>Enviada a cocina</span></div><div class="event-line" id="evReady"><i></i><span>Preparación lista</span></div><div class="event-line" id="evPaid"><i></i><span>Venta cobrada</span></div></div></div>
+            <button class="button button-primary owner-pay" id="payOrder" disabled>Cobrar orden y actualizar Owner</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="real-section" id="real" data-tour="real">
+      <div class="sticky-copy reveal">
+        <p class="eyebrow">EL PROYECTO</p>
+        <h2>Una base sólida.<br>Una operación muy tuya.</h2>
+        <p>Odoo 19 ya documenta operación para restaurantes: pisos y mesas, órdenes, envío a cocina/bar, división de cuentas, propinas, pantallas de preparación, autoservicio y lealtad. VLUX no necesita reinventar esas piezas.</p>
+        <div class="source-note">Esta propuesta separa <b>plataforma</b>, <b>capa VLUX actual</b> y <b>trabajo de implementación</b>.</div>
+      </div>
+
+      <div class="truth-stack">
+        <article class="truth-panel platform-panel reveal">
+          <div class="panel-index">A</div>
+          <div><p class="pill purple">ODOO 19 · DISPONIBLE EN PLATAFORMA</p><h3>Operación de restaurante</h3><p>Mesas, órdenes, cocina, cuenta, preparación y reportes forman parte de la base tecnológica que configuramos y validamos.</p></div>
+          <ul><li>Pisos y mesas</li><li>Órdenes por mesa</li><li>Notificación a cocina/bar</li><li>Cuenta dividida y propinas</li><li>Pantalla de preparación</li><li>Autoservicio / QR según alcance</li></ul>
+        </article>
+
+        <article class="truth-panel vlux-panel reveal">
+          <div class="panel-index">B</div>
+          <div><p class="pill cyan">VLUX · YA PRESENTE EN EL PRODUCTO</p><h3>Control + lectura del negocio</h3><p>El repo actual ya modela ventas, tickets, inventario, oportunidad de ROI y una experiencia Owner separada.</p></div>
+          <ul><li>Venta → ticket → stock</li><li>Simulación de venta</li><li>Dashboard / Owner</li><li>Mobile Scanner</li><li>Planes comerciales</li><li>Calculadora ROI existente</li></ul>
+        </article>
+
+        <article class="truth-panel build-panel reveal">
+          <div class="panel-index">C</div>
+          <div><p class="pill gold">PROYECTO · CONFIGURAR Y VALIDAR</p><h3>Perfil El Refil</h3><p>Esto sí requiere trabajo de VLUX: cargar catálogo real, mapear mesas, roles, cocina, hardware, pagos, capacitación y criterios de aceptación.</p></div>
+          <ul><li>Menú y precios reales</li><li>Plano real de mesas</li><li>Estaciones de preparación</li><li>Usuarios y permisos</li><li>Hardware y pagos</li><li>Piloto en una sucursal</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="differentiator" id="diferenciador" data-tour="differentiator">
+      <div class="diff-head reveal"><p class="eyebrow">03 · DIFERENCIADOR</p><h2>Odoo pone la base.<br><em>VLUX convierte esa base en operación medible.</em></h2></div>
+      <div class="diff-grid">
+        <article class="diff-hero reveal"><div class="diff-number">01</div><h3>Implementación adaptativa</h3><p>La filosofía oficial de VLUX es que la tecnología se adapte a los procesos de la empresa, no al revés. Para el restaurante significa configurar flujo, roles, mesas, cocina y lectura gerencial alrededor de su forma real de operar.</p><div class="diff-line"><span>PLATAFORMA</span><i></i><b>PROCESO REAL</b><i></i><span>RESULTADO</span></div></article>
+        <article class="diff-card reveal"><span>02</span><h3>Owner separado del cajero</h3><p>La operación necesita velocidad; el dueño necesita síntesis. VLUX Owner mantiene esa separación en una PWA enfocada en lectura gerencial.</p></article>
+        <article class="diff-card reveal"><span>03</span><h3>ROI explícito</h3><p>No prometemos “ahorros mágicos”. El cálculo usa merma, compras, horas administrativas y ventas no registradas; todos los supuestos quedan a la vista.</p></article>
+        <article class="diff-card reveal"><span>04</span><h3>Entrega acelerada con IA</h3><p>Claude Pro / Codex aceleran configuración, código, pruebas y documentación. La validación operativa, hardware y QA siguen siendo humanos y no se omiten.</p></article>
+      </div>
+    </section>
+
+    <section class="roi-section" id="roi" data-tour="roi">
+      <div class="roi-intro reveal"><p class="eyebrow">04 · CALCULADORA ROI</p><h2>¿En cuánto tiempo recupera su inversión?</h2><p>La calculadora replica la lógica que ya existe en el repo de VLUX POS. Es un escenario, no una garantía. Cambia cualquier supuesto frente a la clienta.</p></div>
+
+      <div class="roi-shell reveal">
+        <aside class="roi-form">
+          <div class="form-head"><span>DATOS DEL RESTAURANTE</span><button id="clearROI">Limpiar</button></div>
+          <label><span>Ventas mensuales <button class="help" data-tip="Pregunta: ¿cuánto vende aproximadamente el restaurante en un mes normal?">?</button></span><div class="input-money"><b>$</b><input id="monthlySales" type="number" min="0" step="1000" value="450000"></div></label>
+          <label><span>Compras mensuales</span><div class="input-money"><b>$</b><input id="monthlyPurchases" type="number" min="0" step="1000" value="160000"></div></label>
+          <div class="two-col"><label><span>Merma / fuga actual</span><div class="input-suffix"><input id="shrinkCurrent" type="number" min="0" max="30" step="0.1" value="3"><b>%</b></div></label><label><span>Merma objetivo</span><div class="input-suffix"><input id="shrinkControlled" type="number" min="0" max="30" step="0.1" value="2.2"><b>%</b></div></label></div>
+          <label><span>Compras mal dirigidas estimadas</span><div class="input-suffix"><input id="poorPurchases" type="number" min="0" max="30" step="0.1" value="1"><b>%</b></div></label>
+          <div class="two-col"><label><span>Horas admin. recuperables / día</span><input id="adminHours" type="number" min="0" max="12" step="0.25" value="0.75"></label><label><span>Costo operativo / hora</span><div class="input-money"><b>$</b><input id="hourlyCost" type="number" min="0" step="5" value="95"></div></label></div>
+          <div class="two-col"><label><span>Días de operación / mes</span><input id="opDays" type="number" min="1" max="31" value="30"></label><label><span>Ventas no registradas recuperables</span><div class="input-suffix"><input id="unregistered" type="number" min="0" max="20" step="0.1" value="0.3"><b>%</b></div></label></div>
+
+          <div class="plan-select"><span>PLAN VLUX ACTUAL</span><div class="plan-buttons"><button data-plan="start">START<small>$14,590 + $500/mes</small></button><button class="active" data-plan="pro">PRO<small>$21,590 + $699/mes</small></button><button data-plan="business">BUSINESS<small>$28,590 + $799/mes</small></button></div></div>
+          <p class="scenario-warning">Escenario precargado sólo para demostrar el cálculo. Sustituir con datos de la clienta antes de presentarlo como ROI.</p>
+        </aside>
+
+        <div class="roi-results">
+          <div class="roi-hero-result"><small>RECUPERACIÓN ESTIMADA</small><strong id="paybackMonths">2.7</strong><span>meses</span><p id="paybackText">con los supuestos actuales</p></div>
+          <div class="roi-metrics"><article><small>Oportunidad mensual</small><strong id="monthlyOpportunity">$8,688</strong></article><article><small>Neto después del plan</small><strong id="netOpportunity">$7,989</strong></article><article><small>Oportunidad anual</small><strong id="annualOpportunity">$104,250</strong></article></div>
+          <div class="roi-breakdown"><h3>¿De dónde sale?</h3><div><span>Merma controlada</span><b id="rShrink">$3,600</b></div><div><span>Compras mejor dirigidas</span><b id="rPurchases">$1,600</b></div><div><span>Tiempo administrativo</span><b id="rAdmin">$2,138</b></div><div><span>Ventas registradas</span><b id="rRegistration">$1,350</b></div></div>
+          <div class="roi-method"><b>Fórmula VLUX actual</b><code>merma recuperada + compras recuperadas + tiempo recuperado + ventas registradas − mensualidad</code></div>
+        </div>
+      </div>
+
+      <div class="star-product reveal">
+        <div><p class="eyebrow">PREGUNTA COMERCIAL</p><h3>“¿Cuál es el producto que más vendes?”</h3><p>No sabemos cuál es el #1 real de El Refil. Las reseñas públicas mencionan con frecuencia chilaquiles y enchiladas; úsalo sólo para abrir la conversación y reemplázalo con el dato real de la dueña.</p></div>
+        <div class="star-calc"><label><span>Producto</span><input id="starName" value="Chilaquiles verdes (ejemplo)"></label><div class="two-col"><label><span>Unidades / mes</span><input id="starUnits" type="number" value="350" min="0"></label><label><span>Precio promedio</span><div class="input-money"><b>$</b><input id="starPrice" type="number" value="220" min="0"></div></label></div><div class="two-col"><label><span>Margen contribución</span><div class="input-suffix"><input id="starMargin" type="number" value="55" min="0" max="100"><b>%</b></div></label><label><span>Mejora disponibilidad</span><div class="input-suffix"><input id="starAvailability" type="number" value="2" min="0" max="20" step="0.5"><b>%</b></div></label></div><div class="star-result"><span>Contribución mensual actual</span><b id="starContribution">$42,350</b><span>Escenario extra por disponibilidad</span><strong id="starIncrement">+$847/mes</strong><small>No incluido en el ROI principal para evitar doble conteo.</small></div></div>
+      </div>
+    </section>
+
+    <section class="timeline-section" id="timeline" data-tour="timeline">
+      <div class="timeline-head reveal"><p class="eyebrow">05 · FECHA REALISTA</p><h2>Resultados visibles en días.<br>Producción estable en semanas.</h2><p>Asumiendo cierre después de la reunión, una sucursal piloto y sin integración de hardware exótico. El calendario incluye margen porque VLUX mantiene otros proyectos en paralelo.</p></div>
+      <div class="timeline-track reveal">
+        <article class="milestone now"><span>29 SEP</span><h3>Demo comercial</h3><p>Esta experiencia: flujo, alcance, ROI y preguntas de diagnóstico.</p><b>LISTO</b></article>
+        <article><span>30 SEP — 03 OCT</span><h3>Diagnóstico + sandbox</h3><p>Menú real, usuarios, mesas, métodos de pago y estaciones.</p><b>3–4 días</b></article>
+        <article><span>05 — 09 OCT</span><h3>Primera operación real</h3><p>Catálogo, plano de mesas y orden real en ambiente de prueba.</p><b>Resultado visible</b></article>
+        <article><span>12 — 16 OCT</span><h3>Cocina + Owner + QA</h3><p>Preparación, roles, reportes, validación de flujo y capacitación inicial.</p><b>Semana 3</b></article>
+        <article><span>19 — 23 OCT</span><h3>Piloto 1 sucursal</h3><p>Operación controlada, medición de fricción y correcciones.</p><b>Semana 4</b></article>
+        <article class="go-live"><span>09 — 13 NOV</span><h3>Go-live objetivo</h3><p>Ventana conservadora para estabilizar sin descuidar otros proyectos.</p><b>6–7 semanas</b></article>
+      </div>
+      <div class="timeline-notes reveal"><div><strong>IA acelera</strong><span>configuración, código, pruebas, documentación y análisis.</span></div><div><strong>No acelera mágicamente</strong><span>levantamiento, decisiones del cliente, hardware, capacitación y pruebas en operación.</span></div><div><strong>Dependencias</strong><span>catálogo, procesos, responsables, equipos, métodos de pago y acceso técnico.</span></div></div>
+    </section>
+
+    <section class="close-section" data-tour="close">
+      <div class="close-brands reveal"><img src="assets/refil-logo.svg" alt="El Refil"><span>+</span><img src="assets/vlux-official.png" alt="VLUX"></div>
+      <div class="close-copy reveal"><p class="eyebrow">SIGUIENTE PASO</p><h2>La siguiente mesa<br>puede ser la tuya.</h2><p>El siguiente entregable después del sí no es otra presentación: es un sandbox con su menú, sus mesas y un recorrido completo con datos controlados.</p><div class="hero-actions center"><button class="button button-primary" id="restartGuide">▶ Repetir demostración</button><button class="button button-ghost" data-scroll="#roi">Abrir calculadora ROI</button></div></div>
+    </section>
+  </main>
+
+  <footer class="footer"><img src="assets/vlux-official.png" alt="VLUX"><div><strong>AI Transformation Partner</strong><span>Propuesta comercial · El Refil de la Abuela · 2026</span></div><p>Los datos financieros precargados son un escenario demostrativo. El ROI depende de datos reales y no constituye garantía. Las capacidades de restaurante indicadas como Odoo corresponden a funciones documentadas de Odoo 19; su disponibilidad final se valida durante implementación.</p></footer>
+
+  <div class="modal" id="splitModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-x" data-close-modal>×</button><p class="eyebrow">CUENTA DIVIDIDA</p><h3>Capacidad estándar de restaurante.</h3><p>Odoo documenta la división de cuentas dentro del flujo de restaurante. Esta pantalla sólo demuestra cómo la mostraríamos en la experiencia; no altera la lógica del prototipo.</p><div class="split-preview"><span>Cuenta A <b id="splitA">$0</b></span><span>Cuenta B <b id="splitB">$0</b></span></div><button class="button button-primary full" data-close-modal>Entendido</button></div></div>
+
+  <div class="tooltip" id="tooltip"></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+  <script src="experience-scenes.js?v=voice"></script>
+  <script src="experience.js?v=voice"></script>
+  <script src="refil-design.js"></script>
+</body>
+</html>
+
+

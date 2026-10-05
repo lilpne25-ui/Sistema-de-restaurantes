@@ -1,0 +1,42 @@
+[
+  {
+    "id": "welcome",
+    "text": "Bienvenida a El Refil de la Abuela. Imagina un servicio donde cada mesa, cada pedido y cada cobro cuentan la misma historia. Hoy vamos a recorrer esa experiencia juntas. Verás una operación completa, desde que llega el comensal hasta que la dueña entiende qué pasó en su negocio."
+  },
+  {
+    "id": "tables",
+    "text": "Es hora del desayuno. Una familia llega y ocupa la mesa doce. Desde el salón podemos distinguir las mesas libres y las que ya están en servicio. Observa cómo seleccionamos la mesa: el pedido queda asociado a ella desde el primer momento."
+  },
+  {
+    "id": "order",
+    "text": "La familia pide un agua de frutas, una ensalada César y unos chilaquiles. Los agregamos uno a uno. La cuenta se construye a la vista y suma quinientos diez pesos en este ejemplo. Este catálogo es demostrativo: en el piloto usaremos el menú y los precios reales de El Refil."
+  },
+  {
+    "id": "send",
+    "text": "Ahora enviamos la orden a cocina. Los productos y la mesa viajan juntos, para que preparación tenga una referencia clara. Aquí estás viendo una simulación local del flujo. La conexión con la pantalla de preparación de Odoo se configura y valida durante el piloto."
+  },
+  {
+    "id": "ready",
+    "text": "Cocina termina la preparación y marca el pedido como listo. Observa cómo la tarjeta cambia de columna. El estado del pedido ya es visible para continuar el servicio. Esta transición representa el flujo que validaremos con las estaciones y responsables reales del restaurante."
+  },
+  {
+    "id": "payment",
+    "text": "La familia termina y cerramos la cuenta. En esta demo, el cobro es simulado: no se procesa ningún pago. Al confirmar, la mesa queda libre y la venta se refleja en los indicadores. Lo importante es la continuidad entre el pedido que empezó en el salón y el ingreso que ve la dueña."
+  },
+  {
+    "id": "owner",
+    "text": "Esta es la vista de la dueña. La venta de quinientos diez pesos ya está incluida y hay un ticket más. También podemos seguir el recorrido de la orden: cocina, preparación y cobro. Las cifras de fondo son ilustrativas; el cambio de esta venta sí proviene de la operación que acabamos de demostrar."
+  },
+  {
+    "id": "value",
+    "text": "La propuesta tiene tres partes claras. Odoo aporta la base de restaurante. VLUX adapta el flujo y la lectura para la dueña. El proyecto configura menú, mesas, roles y equipos, y los valida en operación. Esta experiencia muestra el objetivo; el piloto confirma qué funciona en la sucursal."
+  },
+  {
+    "id": "roi",
+    "text": "Antes de decidir, pongamos números sobre la mesa. Esta calculadora permite explorar merma, compras y tiempo administrativo con supuestos visibles. Puedes salir del recorrido y ajustar cada dato. El resultado es un escenario para conversar, no una promesa de ahorro. La decisión debe partir de los números reales de El Refil."
+  },
+  {
+    "id": "close",
+    "text": "El objetivo es que el equipo dedique más atención al comensal y que la dueña tenga mayor claridad de su operación. El siguiente paso es un piloto con su menú, sus mesas y sus responsables. Una operación completa, validada en su restaurante. Gracias por recorrer esta experiencia con VLUX."
+  }
+]

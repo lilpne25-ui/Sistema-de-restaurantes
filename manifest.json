@@ -1,0 +1,23 @@
+{
+  "project": "VLUX × El Refil — Experience V2",
+  "date": "2026-09-28",
+  "meeting": "2026-09-29T14:00:00-06:00",
+  "entry": "index.html",
+  "guided_demo": true,
+  "roi_model": "CalculateROIUseCase-compatible",
+  "plans": {
+    "START": {
+      "initial": 14590,
+      "monthly": 500
+    },
+    "PRO": {
+      "initial": 21590,
+      "monthly": 699
+    },
+    "BUSINESS": {
+      "initial": 28590,
+      "monthly": 799
+    }
+  },
+  "go_live_target": "2026-11-09/2026-11-13"
+}
